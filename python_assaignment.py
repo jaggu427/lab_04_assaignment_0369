@@ -49,23 +49,38 @@ def main():
         if choice == 1:
             team_name = input("Enter the team name: ")
             matches = flight_table.search_by_team(team_name)
-            for match in matches:
-                print(f"Location: {match.location}, Teams: {match.team1} vs {match.team2}, Timing: {match.timing}")
+            if matches:
+                print("Matches for", team_name)
+                for match in matches:
+                    print(f"Location: {match.location}, Teams: {match.team1} vs {match.team2}, Timing: {match.timing}")
+            else:
+                print("No matches found for the specified team.")
 
         elif choice == 2:
             location = input("Enter the location: ")
             matches = flight_table.search_by_location(location)
-            for match in matches:
-                print(f"Location: {match.location}, Teams: {match.team1} vs {match.team2}, Timing: {match.timing}")
+            if matches:
+                print("Matches at", location)
+                for match in matches:
+                    print(f"Teams: {match.team1} vs {match.team2}, Timing: {match.timing}")
+            else:
+                print("No matches found for the specified location.")
 
         elif choice == 3:
             timing = input("Enter the timing: ")
             matches = flight_table.search_by_timing(timing)
-            for match in matches:
-                print(f"Location: {match.location}, Teams: {match.team1} vs {match.team2}, Timing: {match.timing}")
+            if matches:
+                print("Matches at", timing)
+                for match in matches:
+                    print(f"Location: {match.location}, Teams: {match.team1} vs {match.team2}")
+            else:
+                print("No matches found for the specified timing.")
 
         elif choice == 4:
             break
 
         else:
-            print("Invalid choice. Please choose another option")
+            print("Invalid choice. Please choose a valid option.")
+
+if __name__ == "__main__":
+    main()
